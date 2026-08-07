@@ -5,28 +5,32 @@ function Courses() {
 
   const courses = [
     {
-      title: "Electrical Engineering",
-      description: "Learn electrical engineering from basic to advanced.",
-      path: "electrical-engineering",
+      name: "Electrical Engineering",
+      slug: "electrical-engineering",
       icon: "⚡",
+      description:
+        "Learn electrical circuits, machines, power systems and core electrical concepts.",
     },
     {
-      title: "Electronics Engineering",
-      description: "Study electronic circuits and semiconductor devices.",
-      path: "electronics-engineering",
+      name: "Electronics Engineering",
+      slug: "electronics-engineering",
       icon: "🔌",
+      description:
+        "Explore semiconductor devices, analog electronics, communication and control systems.",
     },
     {
-      title: "Basic Electronics",
-      description: "Learn diode, transistor, MOSFET, LED and rectifiers.",
-      path: "basic-electronics",
+      name: "Basic Electronics",
+      slug: "basic-electronics",
       icon: "💡",
+      description:
+        "Understand diodes, transistors, MOSFET, LED, rectifiers and basic electronic components.",
     },
     {
-      title: "Digital Electronics",
-      description: "Learn logic gates, flip-flops, counters and registers.",
-      path: "digital-electronics",
+      name: "Digital Electronics",
+      slug: "digital-electronics",
       icon: "💻",
+      description:
+        "Learn number systems, logic gates, Boolean algebra, flip-flops, counters and registers.",
     },
   ];
 
@@ -34,75 +38,174 @@ function Courses() {
     <div
       style={{
         minHeight: "100vh",
-        background: "#0f172a",
-        padding: "60px 40px",
+        background: "linear-gradient(135deg, #f8fafc, #e0f2fe)",
+        padding: "50px 5% 80px",
       }}
     >
-      <h1
-        style={{
-          color: "white",
-          textAlign: "center",
-          fontSize: "45px",
-          marginBottom: "60px",
-        }}
-      >
-        📚 Our Courses
-      </h1>
-
+      {/* Heading */}
       <div
         style={{
+          textAlign: "center",
+          maxWidth: "800px",
+          margin: "0 auto 55px",
+        }}
+      >
+        <p
+          style={{
+            color: "#2563eb",
+            fontWeight: "bold",
+            letterSpacing: "2px",
+            marginBottom: "12px",
+          }}
+        >
+          THE SKILL NEST
+        </p>
+
+        <h1
+          style={{
+            color: "#0f172a",
+            fontSize: "clamp(34px, 6vw, 52px)",
+            fontWeight: "800",
+            margin: 0,
+          }}
+        >
+          Our Courses
+        </h1>
+
+        <p
+          style={{
+            color: "#64748b",
+            fontSize: "17px",
+            lineHeight: "1.7",
+            marginTop: "18px",
+          }}
+        >
+          Choose your field and start learning with
+          structured courses and study material.
+        </p>
+      </div>
+
+      {/* Course Cards */}
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "auto",
           display: "grid",
-          gridTemplateColumns: "repeat(auto-fit,minmax(280px,1fr))",
-          gap: "30px",
+          gridTemplateColumns:
+            "repeat(auto-fit, minmax(270px, 1fr))",
+          gap: "28px",
         }}
       >
         {courses.map((course, index) => (
           <div
-            key={index}
+            key={course.slug}
             style={{
-              background: "#1e293b",
-              borderRadius: "20px",
-              padding: "35px",
-              textAlign: "center",
-              color: "white",
-              boxShadow: "0 10px 30px rgba(0,0,0,.3)",
+              background: "#ffffff",
+              borderRadius: "22px",
+              padding: "30px",
+              border: "1px solid #e2e8f0",
+              boxShadow:
+                "0 10px 30px rgba(15,23,42,0.08)",
+              transition:
+                "transform 0.25s ease, box-shadow 0.25s ease",
+              display: "flex",
+              flexDirection: "column",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(-8px)";
+              e.currentTarget.style.boxShadow =
+                "0 20px 40px rgba(15,23,42,0.15)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform =
+                "translateY(0)";
+              e.currentTarget.style.boxShadow =
+                "0 10px 30px rgba(15,23,42,0.08)";
             }}
           >
+            {/* Icon */}
             <div
               style={{
-                fontSize: "60px",
-                marginBottom: "20px",
+                width: "65px",
+                height: "65px",
+                borderRadius: "18px",
+                background: "#eff6ff",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "32px",
+                marginBottom: "22px",
               }}
             >
               {course.icon}
             </div>
 
-            <h2>{course.title}</h2>
-
+            {/* Course Number */}
             <p
               style={{
-                color: "#cbd5e1",
-                margin: "20px 0",
-                lineHeight: "28px",
+                color: "#2563eb",
+                fontSize: "13px",
+                fontWeight: "bold",
+                marginBottom: "8px",
+                letterSpacing: "1px",
+              }}
+            >
+              COURSE {String(index + 1).padStart(2, "0")}
+            </p>
+
+            {/* Course Name */}
+            <h2
+              style={{
+                color: "#0f172a",
+                fontSize: "23px",
+                lineHeight: "1.4",
+                marginBottom: "14px",
+              }}
+            >
+              {course.name}
+            </h2>
+
+            {/* Description */}
+            <p
+              style={{
+                color: "#64748b",
+                lineHeight: "1.7",
+                marginBottom: "28px",
+                flexGrow: 1,
               }}
             >
               {course.description}
             </p>
 
+            {/* Open Button */}
             <button
-              onClick={() => navigate(`/courses/${course.path}`)}
+              onClick={() =>
+                navigate(`/courses/${course.slug}`)
+              }
               style={{
-                background: "#2563eb",
+                width: "100%",
+                background:
+                  "linear-gradient(90deg, #2563eb, #4f46e5)",
                 color: "white",
                 border: "none",
-                padding: "12px 30px",
-                borderRadius: "10px",
+                padding: "14px 20px",
+                borderRadius: "12px",
                 cursor: "pointer",
-                fontSize: "16px",
                 fontWeight: "bold",
+                fontSize: "15px",
+                transition: "0.2s",
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform =
+                  "scale(1.02)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "scale(1)";
               }}
             >
-              Open
+              Open Course →
             </button>
           </div>
         ))}

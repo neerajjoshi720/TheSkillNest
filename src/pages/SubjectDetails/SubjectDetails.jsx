@@ -4,127 +4,220 @@ function SubjectDetails() {
   const { subjectName } = useParams();
   const navigate = useNavigate();
 
-  const cardStyle = {
-    background: "#1e293b",
-    color: "white",
-    padding: "25px",
-    borderRadius: "18px",
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    marginBottom: "25px",
-    boxShadow: "0 8px 20px rgba(0,0,0,0.2)",
-  };
-
-  const buttonStyle = {
-    background: "#f97316",
-    color: "white",
-    border: "none",
-    padding: "12px 24px",
-    borderRadius: "10px",
-    cursor: "pointer",
-    fontWeight: "bold",
-    fontSize: "15px",
-  };
-
-  const iconStyle = {
-    width: "70px",
-    height: "70px",
-    borderRadius: "50%",
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    fontSize: "32px",
-    marginRight: "20px",
-  };
+  const subjectTitle = subjectName
+    ? subjectName
+        .replaceAll("-", " ")
+        .replace(/\b\w/g, (letter) => letter.toUpperCase())
+    : "Subject";
 
   return (
     <div
       style={{
-        padding: "50px",
-        background: "#f1f5f9",
         minHeight: "100vh",
+        background: "linear-gradient(135deg, #f8fafc, #e0f2fe)",
+        padding: "40px 5% 80px",
       }}
     >
+      {/* Back Button */}
       <button
         onClick={() => navigate(-1)}
         style={{
           background: "#2563eb",
           color: "white",
           border: "none",
-          padding: "12px 24px",
+          padding: "12px 22px",
           borderRadius: "10px",
           cursor: "pointer",
           fontWeight: "bold",
+          marginBottom: "35px",
         }}
       >
         ← Back
       </button>
 
-      <h1
+      {/* Subject Heading */}
+      <div
         style={{
-          marginTop: "30px",
-          marginBottom: "40px",
-          textTransform: "capitalize",
-          fontSize: "38px",
-          color: "#0f172a",
+          maxWidth: "1000px",
+          margin: "0 auto 45px",
+          textAlign: "center",
         }}
       >
-        {subjectName.replaceAll("-", " ")}
-      </h1>
+        <p
+          style={{
+            color: "#2563eb",
+            fontWeight: "bold",
+            letterSpacing: "2px",
+            marginBottom: "12px",
+          }}
+        >
+          THE SKILL NEST
+        </p>
 
-      {/* Video */}
-      <div style={cardStyle}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ ...iconStyle, background: "#2563eb" }}>🎥</div>
+        <h1
+          style={{
+            color: "#0f172a",
+            fontSize: "clamp(30px, 6vw, 48px)",
+            fontWeight: "800",
+            margin: 0,
+          }}
+        >
+          {subjectTitle}
+        </h1>
 
-          <div>
-            <h2 style={{ margin: 0 }}>Video Lecture</h2>
-            <p style={{ color: "#cbd5e1" }}>
-              Video lectures will be available soon.
-            </p>
-          </div>
-        </div>
-
-        <button style={buttonStyle}>
-          Coming Soon
-        </button>
+        <p
+          style={{
+            color: "#64748b",
+            marginTop: "15px",
+            fontSize: "17px",
+            lineHeight: "1.6",
+          }}
+        >
+          Learn this subject with simple explanations,
+          lectures and study material.
+        </p>
       </div>
 
-      {/* Notes */}
-      <div style={cardStyle}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ ...iconStyle, background: "#16a34a" }}>📄</div>
-
-          <div>
-            <h2 style={{ margin: 0 }}>Notes & PDF</h2>
-            <p style={{ color: "#cbd5e1" }}>
-              Study notes will be available soon.
-            </p>
+      {/* Two Sections */}
+      <div
+        style={{
+          maxWidth: "1000px",
+          margin: "auto",
+          display: "grid",
+          gridTemplateColumns:
+            "repeat(auto-fit, minmax(280px, 1fr))",
+          gap: "25px",
+        }}
+      >
+        {/* Video Lecture */}
+        <div
+          style={{
+            background: "#ffffff",
+            borderRadius: "20px",
+            padding: "30px",
+            border: "1px solid #e2e8f0",
+            boxShadow:
+              "0 10px 25px rgba(15,23,42,0.08)",
+          }}
+        >
+          <div
+            style={{
+              width: "60px",
+              height: "60px",
+              borderRadius: "16px",
+              background: "#eff6ff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "28px",
+              marginBottom: "20px",
+            }}
+          >
+            🎥
           </div>
+
+          <h2
+            style={{
+              color: "#0f172a",
+              fontSize: "24px",
+              marginBottom: "12px",
+            }}
+          >
+            Video Lecture
+          </h2>
+
+          <p
+            style={{
+              color: "#64748b",
+              lineHeight: "1.6",
+              marginBottom: "25px",
+            }}
+          >
+            Video lectures for this subject will be
+            available soon.
+          </p>
+
+          <button
+            disabled
+            style={{
+              width: "100%",
+              background: "#e2e8f0",
+              color: "#475569",
+              border: "none",
+              padding: "13px 20px",
+              borderRadius: "10px",
+              fontWeight: "bold",
+              cursor: "not-allowed",
+            }}
+          >
+            🕒 Coming Soon
+          </button>
         </div>
 
-        <button style={buttonStyle}>
-          Coming Soon
-        </button>
-      </div>
-
-      {/* Quiz */}
-      <div style={cardStyle}>
-        <div style={{ display: "flex", alignItems: "center" }}>
-          <div style={{ ...iconStyle, background: "#9333ea" }}>📝</div>
-
-          <div>
-            <h2 style={{ margin: 0 }}>Practice Quiz</h2>
-            <p style={{ color: "#cbd5e1" }}>
-              Test your knowledge with quizzes.
-            </p>
+        {/* Notes & PDF */}
+        <div
+          style={{
+            background: "#ffffff",
+            borderRadius: "20px",
+            padding: "30px",
+            border: "1px solid #e2e8f0",
+            boxShadow:
+              "0 10px 25px rgba(15,23,42,0.08)",
+          }}
+        >
+          <div
+            style={{
+              width: "60px",
+              height: "60px",
+              borderRadius: "16px",
+              background: "#f5f3ff",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              fontSize: "28px",
+              marginBottom: "20px",
+            }}
+          >
+            📄
           </div>
-        </div>
 
-        <button style={buttonStyle}>
-          Coming Soon
-        </button>
+          <h2
+            style={{
+              color: "#0f172a",
+              fontSize: "24px",
+              marginBottom: "12px",
+            }}
+          >
+            Notes & PDF
+          </h2>
+
+          <p
+            style={{
+              color: "#64748b",
+              lineHeight: "1.6",
+              marginBottom: "25px",
+            }}
+          >
+            Study notes and PDF material for this
+            subject will be available soon.
+          </p>
+
+          <button
+            disabled
+            style={{
+              width: "100%",
+              background: "#e2e8f0",
+              color: "#475569",
+              border: "none",
+              padding: "13px 20px",
+              borderRadius: "10px",
+              fontWeight: "bold",
+              cursor: "not-allowed",
+            }}
+          >
+            🕒 Coming Soon
+          </button>
+        </div>
       </div>
     </div>
   );
