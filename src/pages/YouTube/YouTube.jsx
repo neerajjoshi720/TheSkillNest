@@ -45,8 +45,8 @@ function YouTube() {
             lineHeight:"1.7",
           }}
         >
-          Electrical Engineering, Electronics aur
-          technical learning videos ke liye hamara YouTube channel.
+          Electrical Engineering, Electronics and
+          technical learning videos, visit our YouTube channel.
         </p>
 
 
@@ -86,9 +86,9 @@ function YouTube() {
               marginTop:"15px",
             }}
           >
-            Semiconductor, Diode, Transistor,
-            Digital Electronics aur Electrical Engineering
-            ke concepts simple language me.
+            Learn Semiconductor, Diode, Transistor,
+            Digital Electronics and Electrical Engineering
+            concepts in simple language.
           </p>
 
 

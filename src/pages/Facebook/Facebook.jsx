@@ -44,8 +44,8 @@ function Facebook() {
             marginTop:"20px",
           }}
         >
-          Electrical Engineering students ke liye
-          learning community aur updates.
+          A learning community and source of updates
+          for Electrical Engineering students.
         </p>
 
 
@@ -80,8 +80,8 @@ function Facebook() {
               marginTop:"15px",
             }}
           >
-            Notes, updates, engineering discussions
-            aur educational content ke liye join kare.
+            Join us for notes, updates, engineering discussions,
+            and educational content.
           </p>
 
 

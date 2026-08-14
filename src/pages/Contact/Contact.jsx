@@ -14,7 +14,6 @@ function Contact() {
           textAlign: "center",
         }}
       >
-
         <p
           style={{
             color: "#2563eb",
@@ -24,7 +23,6 @@ function Contact() {
         >
           THE SKILL NEST
         </p>
-
 
         <h1
           style={{
@@ -36,7 +34,6 @@ function Contact() {
           📩 Contact Us
         </h1>
 
-
         <p
           style={{
             color: "#64748b",
@@ -44,10 +41,9 @@ function Contact() {
             marginTop: "20px",
           }}
         >
-          Education, notes aur learning related queries ke liye
-          humse connect kare.
+          Connect with us for education, notes, and
+          learning-related queries.
         </p>
-
 
         <div
           style={{
@@ -58,66 +54,71 @@ function Contact() {
             boxShadow: "0 10px 30px rgba(0,0,0,0.1)",
           }}
         >
-
           <h2 style={{ color: "#0f172a" }}>
             Get In Touch
           </h2>
 
-
-          <p style={{ color:"#64748b", marginTop:"20px" }}>
+          <a
+            href="mailto:ncjoshi132@gmail.com"
+            style={{
+              display: "block",
+              color: "#64748b",
+              marginTop: "20px",
+              textDecoration: "none",
+              fontWeight: "bold",
+            }}
+          >
             📧 Email: ncjoshi132@gmail.com
-          </p>
+          </a>
 
-
-          <p style={{ color:"#64748b", marginTop:"12px" }}>
+          <p
+            style={{
+              color: "#64748b",
+              marginTop: "12px",
+            }}
+          >
             💬 WhatsApp: @Neeraj479
           </p>
-
 
           <a
             href="https://youtube.com/@study_withneeraj"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display:"block",
-              marginTop:"12px",
-              color:"#dc2626",
-              textDecoration:"none",
-              fontWeight:"bold",
+              display: "block",
+              marginTop: "12px",
+              color: "#dc2626",
+              textDecoration: "none",
+              fontWeight: "bold",
             }}
           >
             ▶️ YouTube: Study With Neeraj
           </a>
-
 
           <a
             href="https://www.facebook.com/share/1DuDJkr4ur/"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              display:"block",
-              marginTop:"12px",
-              color:"#2563eb",
-              textDecoration:"none",
-              fontWeight:"bold",
+              display: "block",
+              marginTop: "12px",
+              color: "#2563eb",
+              textDecoration: "none",
+              fontWeight: "bold",
             }}
           >
             📘 Facebook Community
           </a>
 
-
           <p
             style={{
-              color:"#64748b",
-              marginTop:"25px",
+              color: "#64748b",
+              marginTop: "25px",
             }}
           >
             📚 The Skill Nest - Learn • Build • Grow
           </p>
-
-
         </div>
-
       </div>
     </div>
   );
