@@ -1,221 +1,244 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function SubjectDetails() {
   const { subjectName } = useParams();
-  const navigate = useNavigate();
 
-  const subjectTitle = subjectName
-    ? subjectName
-        .replaceAll("-", " ")
-        .replace(/\b\w/g, (letter) => letter.toUpperCase())
-    : "Subject";
+  // Subject name ko readable format me convert karna
+  const formatSubjectName = (name) => {
+    if (!name) return "Subject";
+
+    return name
+      .replace(/-/g, " ")
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+  };
+
+  const subject = formatSubjectName(subjectName);
+
+  // PDF files
+  const pdfFiles = {
+    "basic-electrical-engineering":
+      "/notes/basic-electrical-engineering.pdf",
+
+    "circuit-theory":
+      "/notes/circuit-theory.pdf",
+
+    "electrical-machines":
+      "/notes/electrical-machines.pdf",
+
+    "power-system":
+      "/notes/power-system.pdf",
+
+    "measurements-instruments":
+      "/notes/measurements-and-instruments.pdf",
+
+    "measurements-and-instruments":
+      "/notes/measurements-and-instruments.pdf",
+
+    "network-theory":
+      "/notes/network-theory.pdf",
+  };
+
+  const pdfUrl = pdfFiles[subjectName];
 
   return (
     <div
       style={{
         minHeight: "100vh",
-        background: "linear-gradient(135deg, #f8fafc, #e0f2fe)",
-        padding: "40px 5% 80px",
+        background: "linear-gradient(135deg, #eff6ff, #e0f2fe)",
+        padding: "60px 20px",
       }}
     >
-      {/* Back Button */}
-      <button
-        onClick={() => navigate(-1)}
-        style={{
-          background: "#2563eb",
-          color: "white",
-          border: "none",
-          padding: "12px 22px",
-          borderRadius: "10px",
-          cursor: "pointer",
-          fontWeight: "bold",
-          marginBottom: "35px",
-        }}
-      >
-        ← Back
-      </button>
-
-      {/* Subject Heading */}
       <div
         style={{
           maxWidth: "1000px",
-          margin: "0 auto 45px",
-          textAlign: "center",
+          margin: "0 auto",
         }}
       >
-        <p
-          style={{
-            color: "#2563eb",
-            fontWeight: "bold",
-            letterSpacing: "2px",
-            marginBottom: "12px",
-          }}
-        >
-          THE SKILL NEST
-        </p>
-
-        <h1
-          style={{
-            color: "#0f172a",
-            fontSize: "clamp(30px, 6vw, 48px)",
-            fontWeight: "800",
-            margin: 0,
-          }}
-        >
-          {subjectTitle}
-        </h1>
-
-        <p
-          style={{
-            color: "#64748b",
-            marginTop: "15px",
-            fontSize: "17px",
-            lineHeight: "1.6",
-          }}
-        >
-          Learn this subject with simple explanations,
-          lectures and study material.
-        </p>
-      </div>
-
-      {/* Two Sections */}
-      <div
-        style={{
-          maxWidth: "1000px",
-          margin: "auto",
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit, minmax(280px, 1fr))",
-          gap: "25px",
-        }}
-      >
-        {/* Video Lecture */}
+        {/* Header */}
         <div
           style={{
-            background: "#ffffff",
+            background: "white",
             borderRadius: "20px",
-            padding: "30px",
-            border: "1px solid #e2e8f0",
-            boxShadow:
-              "0 10px 25px rgba(15,23,42,0.08)",
+            padding: "40px 30px",
+            textAlign: "center",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
+            marginBottom: "30px",
           }}
         >
           <div
             style={{
-              width: "60px",
-              height: "60px",
-              borderRadius: "16px",
+              display: "inline-block",
               background: "#eff6ff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "28px",
-              marginBottom: "20px",
+              color: "#2563eb",
+              padding: "10px 18px",
+              borderRadius: "30px",
+              fontWeight: "700",
+              marginBottom: "18px",
             }}
           >
-            🎥
+            Electrical & Electronics Engineering
           </div>
 
-          <h2
+          <h1
             style={{
+              fontSize: "clamp(28px, 5vw, 44px)",
               color: "#0f172a",
-              fontSize: "24px",
-              marginBottom: "12px",
+              margin: "10px 0",
             }}
           >
-            Video Lecture
-          </h2>
+            {subject}
+          </h1>
 
           <p
             style={{
               color: "#64748b",
-              lineHeight: "1.6",
-              marginBottom: "25px",
+              fontSize: "17px",
+              lineHeight: "1.7",
+              maxWidth: "700px",
+              margin: "15px auto 0",
             }}
           >
-            Video lectures for this subject will be
-            available soon.
+            Learn this subject with simple explanations, study notes and
+            video lectures.
           </p>
-
-          <button
-            disabled
-            style={{
-              width: "100%",
-              background: "#e2e8f0",
-              color: "#475569",
-              border: "none",
-              padding: "13px 20px",
-              borderRadius: "10px",
-              fontWeight: "bold",
-              cursor: "not-allowed",
-            }}
-          >
-            🕒 Coming Soon
-          </button>
         </div>
 
-        {/* Notes & PDF */}
+        {/* Study Notes */}
         <div
           style={{
-            background: "#ffffff",
+            background: "white",
             borderRadius: "20px",
-            padding: "30px",
-            border: "1px solid #e2e8f0",
-            boxShadow:
-              "0 10px 25px rgba(15,23,42,0.08)",
+            padding: "35px 30px",
+            marginBottom: "25px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.07)",
           }}
         >
-          <div
-            style={{
-              width: "60px",
-              height: "60px",
-              borderRadius: "16px",
-              background: "#f5f3ff",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "28px",
-              marginBottom: "20px",
-            }}
-          >
-            📄
-          </div>
-
           <h2
             style={{
               color: "#0f172a",
-              fontSize: "24px",
-              marginBottom: "12px",
+              marginTop: 0,
+              fontSize: "28px",
             }}
           >
-            Notes & PDF
+            📚 Study Notes
           </h2>
 
           <p
             style={{
               color: "#64748b",
-              lineHeight: "1.6",
-              marginBottom: "25px",
+              lineHeight: "1.7",
+              fontSize: "16px",
             }}
           >
-            Study notes and PDF material for this
-            subject will be available soon.
+            Read the complete study material in PDF format.
           </p>
 
-          <button
-            disabled
+          {pdfUrl ? (
+            <a
+              href={pdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: "block",
+                textDecoration: "none",
+                background: "#2563eb",
+                color: "white",
+                padding: "16px 24px",
+                borderRadius: "12px",
+                fontSize: "17px",
+                fontWeight: "700",
+                textAlign: "center",
+                marginTop: "20px",
+              }}
+            >
+              📖 Open Study Notes →
+            </a>
+          ) : (
+            <p
+              style={{
+                color: "#64748b",
+                background: "#f8fafc",
+                padding: "15px",
+                borderRadius: "10px",
+              }}
+            >
+              Study notes for this subject will be added soon.
+            </p>
+          )}
+        </div>
+
+        {/* YouTube Video Section */}
+        <div
+          style={{
+            background: "white",
+            borderRadius: "20px",
+            padding: "35px 30px",
+            boxShadow: "0 10px 30px rgba(0,0,0,0.07)",
+          }}
+        >
+          <h2
             style={{
-              width: "100%",
-              background: "#e2e8f0",
-              color: "#475569",
-              border: "none",
-              padding: "13px 20px",
-              borderRadius: "10px",
-              fontWeight: "bold",
-              cursor: "not-allowed",
+              color: "#0f172a",
+              marginTop: 0,
+              fontSize: "28px",
             }}
           >
-            🕒 Coming Soon
+            🎥 Video Lectures
+          </h2>
+
+          <p
+            style={{
+              color: "#64748b",
+              lineHeight: "1.7",
+              fontSize: "16px",
+            }}
+          >
+            Watch Electrical and Electronics Engineering lectures on our
+            YouTube channel.
+          </p>
+
+          <a
+            href="https://youtube.com/@study_withneeraj"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "block",
+              textDecoration: "none",
+              background: "#ef4444",
+              color: "white",
+              padding: "16px 24px",
+              borderRadius: "12px",
+              fontSize: "17px",
+              fontWeight: "700",
+              textAlign: "center",
+              marginTop: "20px",
+            }}
+          >
+            ▶ Watch Video Lectures →
+          </a>
+        </div>
+
+        {/* Back Button */}
+        <div
+          style={{
+            textAlign: "center",
+            marginTop: "30px",
+          }}
+        >
+          <button
+            onClick={() => window.history.back()}
+            style={{
+              border: "none",
+              background: "#0f172a",
+              color: "white",
+              padding: "13px 25px",
+              borderRadius: "10px",
+              fontSize: "16px",
+              fontWeight: "600",
+              cursor: "pointer",
+            }}
+          >
+            ← Back to Subjects
           </button>
         </div>
       </div>
